@@ -2,7 +2,7 @@ import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
 import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
 import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
-// import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
+import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
 import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
 import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
@@ -56,6 +56,16 @@ function RenderLandingPage(props) {
           </div>
         </div>
         {/* GRANT RATES OVER TIME - IMAGE & TITLE  */}
+        <div class="grant-rates-over-time-container ">
+          <img
+            src={GrantRatesOverTimeImg}
+            alt="Line-Chart-img"
+            className="gr-overtime-img"
+          />
+          <div className="grant-rates-over-time-container">
+            <p>Search Grant Rates Over Time</p>
+          </div>
+        </div>
       </div>
 
       <div className="view-more-data-btn-container">
