@@ -34,7 +34,7 @@ function RenderLandingPage(props) {
 
       {/* GRANT RATES BY OFFICE - IMAGE & TITLE  */}
       <div className="graphs-section">
-        <div class="grant-rates-by-office-graph-container ">
+        <div className="grant-rates-by-office-graph-container ">
           <img
             src={GrantRatesByOfficeImg}
             alt="Bar-Graph-img"
@@ -45,7 +45,7 @@ function RenderLandingPage(props) {
           </div>
         </div>
         {/* GRANT RATES BY NATIONALITY - IMAGE & TITLE  */}
-        <div class="grant-rates-by-nationality-container ">
+        <div className="grant-rates-by-nationality-container ">
           <img
             src={GrantRatesByNationalityImg}
             alt="Pie-Chart-img"
@@ -56,7 +56,7 @@ function RenderLandingPage(props) {
           </div>
         </div>
         {/* GRANT RATES OVER TIME - IMAGE & TITLE  */}
-        <div class="grant-rates-over-time-container ">
+        <div className="grant-rates-over-time-container ">
           <img
             src={GrantRatesOverTimeImg}
             alt="Line-Chart-img"
@@ -74,8 +74,13 @@ function RenderLandingPage(props) {
           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
-          View the Data
+          <span>View the Data</span>
         </Button>
+        <div className="read-more-btn, download-data-btn">
+          <button type="button">
+            <span>Download the Data</span>
+          </button>
+        </div>
       </div>
       {/* MIDDLE SECTION */}
       <div className="middle-section">

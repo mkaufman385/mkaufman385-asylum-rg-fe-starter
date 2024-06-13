@@ -43,11 +43,14 @@
 
 .graphs-section {
   display: flex;
-  justify-content: center;
-  gap: 20px; /* Adjust the gap between images as needed */
+  // justify-content: center;
+  width: 100%;
+  justify-content: space-evenly;
+  // gap: 20px; /* Adjust the gap between images as needed */
 }
 
 .view-more-data-btn-container {
+  display: flex;
   height: 44px;
   width: 180px;
   margin: 0 auto;
@@ -591,8 +594,10 @@
   }
 
   .gr-office-img {
-    height: 125px;
-    width: 125px;
+    // height: 125px;
+    // width: 125px;
+    width: 200px;
+    height: 200px;
   }
 
   .grant-rates-by-nationality-container {
@@ -605,8 +610,8 @@
 
   .gr-nationality-img {
     margin-bottom: 8%;
-    height: 335px;
-    width: 383px;
+    width: 200px;
+    height: 200px;
   }
 
   .grant-rates-over-time-container {
@@ -622,6 +627,11 @@
   }
 
   .ant-btn {
+    line-height: 2;
+    width: 172px;
+  }
+
+  .download-data-btn {
     line-height: 2;
     width: 172px;
   }
