@@ -4,7 +4,7 @@ import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png'
 import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
 import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
 import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
-import '../../../styles/RenderLandingPage.less';
+import '../../../styles/styles.css';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
@@ -106,11 +106,9 @@ function RenderLandingPage(props) {
       <div className="bottom-section">
         {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
-        <div className="systemic-disparity-insights-container">
-          <h1 className="systemic-disparity-insights-title">
-            Systemic Disparity Insights
-          </h1>
-        </div>
+        {/* <div> */}
+        <h1>Systemic Disparity Insights</h1>
+        {/* </div> */}
 
         <div className="data-container">
           <div className="first-data-point-container">
