@@ -77,9 +77,12 @@ function RenderLandingPage(props) {
           <span>View the Data</span>
         </Button>
         <div className="read-more-btn, download-data-btn">
-          <button type="button">
+          <Button
+            type="button"
+            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          >
             <span>Download the Data</span>
-          </button>
+          </Button>
         </div>
       </div>
       {/* MIDDLE SECTION */}
