@@ -135,6 +135,15 @@ function RenderLandingPage(props) {
             </h3>
           </div>
         </div>
+        {/* READ MORE BUTTON */}
+        <div className="read-more-btn, download-data-btn">
+          <Button
+            type="button"
+            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          >
+            <span>Read More</span>
+          </Button>
+        </div>
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
