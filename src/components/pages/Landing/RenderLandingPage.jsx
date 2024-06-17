@@ -129,7 +129,7 @@ function RenderLandingPage(props) {
           <div className="third-data-point-container">
             <h2>6x Lower</h2>
             <h3>
-              Between fiscal year 2017 and 2020, the New York asylum office’s
+              Between fiscal year 2017 and 2020, the New York asylum office's
               average grant rate was six times lower than the San Francisco
               asylum office.
             </h3>
