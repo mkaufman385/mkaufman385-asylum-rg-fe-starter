@@ -109,6 +109,12 @@ p {
   --font-moneta-bold: 'MonetaBold';
 }
 
+/* ------------------------------------------- */
+
+/* ADDED STYLING TO styles.css because RenderLandingPage.Less was not responding to changes */
+
+/* ------------------------------------------- */
+
 .header {
   background-color: #404c4a;
   color: red;
