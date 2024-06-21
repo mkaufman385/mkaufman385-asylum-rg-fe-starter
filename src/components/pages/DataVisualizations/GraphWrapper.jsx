@@ -50,6 +50,9 @@ function GraphWrapper(props) {
         break;
     }
   }
+
+  //do any async await on this function; try to understand the shape of the API object; use 2 .get's in this function;
+  //The goal is to display the proper data on the graph page
   function updateStateWithNewData(years, view, office, stateSettingCallback) {
     /*
           _                                                                             _
