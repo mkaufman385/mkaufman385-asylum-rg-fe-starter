@@ -51,9 +51,14 @@ function GraphWrapper(props) {
     }
   }
 
-  //do any async await on this function; try to understand the shape of the API object; use 2 .get's in this function;
+  //do an async await on this function; try to understand the shape of the API object; use 2 .get's in this function;
   //The goal is to display the proper data on the graph page
-  function updateStateWithNewData(years, view, office, stateSettingCallback) {
+  async function updateStateWithNewData(
+    years,
+    view,
+    office,
+    stateSettingCallback
+  ) {
     /*
           _                                                                             _
         |                                                                                 |
@@ -76,39 +81,75 @@ function GraphWrapper(props) {
     
     */
     //    ADDED result.data
-    if (office === 'all' || !office) {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-          params: {
-            from: years[0],
-            to: years[1],
-          },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-          params: {
-            from: years[0],
-            to: years[1],
-            office: office,
-          },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-        })
-        .catch(err => {
-          console.error(err);
-        });
+    //--------------------------------------------------------------------------
+
+    try {
+      let result;
+      if (view === 'time-series') {
+        result = await axios.get(
+          'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
+          {
+            params: {
+              from: years[0],
+              to: years[1],
+              office: office !== 'all' ? office : undefined,
+            },
+          }
+        );
+      } else if (view === 'citizenship') {
+        result = await axios.get(
+          'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary',
+          {
+            params: {
+              from: years[0],
+              to: years[1],
+              office: office !== 'all' ? office : undefined,
+            },
+          }
+        );
+      }
+      stateSettingCallback(view, office, result.data);
+    } catch (err) {
+      console.error(err);
     }
+
+    // if (office === 'all' || !office) {
+    //   await axios
+    //     .get(process.env.REACT_APP_API_URI, {
+    //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+    //       params: {
+    //         from: years[0],
+    //         to: years[1],
+    //       },
+    //     })
+    //     .then(result => {
+    //       // console.log(result);
+    //       stateSettingCallback(view, office, result.data);
+    //       // <-- `test_data` here can be simply replaced by `result.data` in prod!
+    //     })
+    //     .catch(err => {
+    //       console.error(err);
+    //     });
+    // } else {
+    //   axios
+    //     .get(process.env.REACT_APP_API_URI, {
+    //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+    //       params: {
+    //         from: years[0],
+    //         to: years[1],
+    //         office: office,
+    //       },
+    //     })
+    //     .then(result => {
+    //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+    //     })
+    //     .catch(err => {
+    //       console.error(err);
+    //     });
+    // }
   }
+
+  // ----------------------------------------------------------------------------------------------------
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
