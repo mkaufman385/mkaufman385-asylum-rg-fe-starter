@@ -10,7 +10,7 @@ import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
 import { resetVisualizationQuery } from '../../../state/actionCreators';
-import test_data from '../../../data/test_data.json';
+// import test_data from '../../../data/test_data.json';
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 
@@ -53,6 +53,7 @@ function GraphWrapper(props) {
 
   //do an async await on this function; try to understand the shape of the API object; use 2 .get's in this function;
   //The goal is to display the proper data on the graph page
+
   async function updateStateWithNewData(
     years,
     view,
@@ -88,6 +89,7 @@ function GraphWrapper(props) {
       if (view === 'time-series') {
         result = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
+          // `${process.env.REACT_APP_API_URI}/fiscalSummary`
           {
             params: {
               from: years[0],
@@ -99,6 +101,7 @@ function GraphWrapper(props) {
       } else if (view === 'citizenship') {
         result = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary',
+          // `${process.env.REACT_APP_API_URI}/citizenshipSummary`
           {
             params: {
               from: years[0],
@@ -108,9 +111,10 @@ function GraphWrapper(props) {
           }
         );
       }
+      console.log('RESULT.DATA RESPONSE: ', result.data);
       stateSettingCallback(view, office, result.data);
     } catch (err) {
-      console.error(err);
+      console.error('CATCH ERROR: ', err);
     }
 
     // if (office === 'all' || !office) {
