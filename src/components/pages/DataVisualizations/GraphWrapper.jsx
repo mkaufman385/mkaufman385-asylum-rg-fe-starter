@@ -111,11 +111,12 @@ function GraphWrapper(props) {
           }
         );
       }
-      console.log('RESULT.DATA RESPONSE: ', result.data);
-      stateSettingCallback(view, office, result.data);
+      console.log('RESULT.DATA RESPONSE: ', [result.data]);
+      stateSettingCallback(view, office, [result.data]);
     } catch (err) {
       console.error('CATCH ERROR: ', err);
     }
+    // -----------------------------------------------------------------------------------------------------------
 
     // if (office === 'all' || !office) {
     //   await axios
