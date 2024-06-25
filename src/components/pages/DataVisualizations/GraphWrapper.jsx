@@ -85,12 +85,11 @@ function GraphWrapper(props) {
     //--------------------------------------------------------------------------
 
     try {
-      let result;
-      let result1;
+      let fiscalSummaryResult;
+      let citizenshipSummaryResult;
       if (view === 'time-series') {
-        result = await axios.get(
+        fiscalSummaryResult = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
-          // `${process.env.REACT_APP_API_URI}/fiscalSummary`
           {
             params: {
               from: years[0],
@@ -99,11 +98,10 @@ function GraphWrapper(props) {
             },
           }
         );
-        stateSettingCallback(view, office, [result.data]);
+        stateSettingCallback(view, office, [fiscalSummaryResult.data]);
       } else if (view === 'citizenship') {
-        result1 = await axios.get(
+        citizenshipSummaryResult = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
-          // `${process.env.REACT_APP_API_URI}/fiscalSummary`
           {
             params: {
               from: years[0],
@@ -112,9 +110,8 @@ function GraphWrapper(props) {
             },
           }
         );
-        result = await axios.get(
+        fiscalSummaryResult = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary',
-          // `${process.env.REACT_APP_API_URI}/citizenshipSummary`
           {
             params: {
               from: years[0],
@@ -123,66 +120,15 @@ function GraphWrapper(props) {
             },
           }
         );
-        result1.data.citizenshipResults = result.data;
-        // console.log('NEW: ', result1.data);
-        stateSettingCallback(view, office, [result1.data]);
+        citizenshipSummaryResult.data.citizenshipResults =
+          fiscalSummaryResult.data;
+        stateSettingCallback(view, office, [citizenshipSummaryResult.data]);
       }
 
-      console.log('RESULT.DATA RESPONSE: ', [result.data]);
-      // const citizenship = {};
-      // citizenship.citizenshipResults = result.data;
-      // result1.data.citizenshipResults = result.data;
-      // console.log('NEW: ', result1.data);
-      // stateSettingCallback(view, office, [result1.data]);
-
-      // if (
-      //   Array.isArray(result.data) &&
-      //   result.data[0] &&
-      //   Array.isArray(result.data[0].yearResults)
-      // ) {
-      //   stateSettingCallback(view, office, [result.data]);
-      // } else {
-      //   console.error('Unexpected data structure: ', result.data);
-      // }
+      console.log('RESULT.DATA RESPONSE: ', [fiscalSummaryResult.data]);
     } catch (err) {
       console.error('CATCH ERROR: ', err);
     }
-    // -----------------------------------------------------------------------------------------------------------
-
-    // if (office === 'all' || !office) {
-    //   await axios
-    //     .get(process.env.REACT_APP_API_URI, {
-    //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-    //       params: {
-    //         from: years[0],
-    //         to: years[1],
-    //       },
-    //     })
-    //     .then(result => {
-    //       // console.log(result);
-    //       stateSettingCallback(view, office, result.data);
-    //       // <-- `test_data` here can be simply replaced by `result.data` in prod!
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //     });
-    // } else {
-    //   axios
-    //     .get(process.env.REACT_APP_API_URI, {
-    //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-    //       params: {
-    //         from: years[0],
-    //         to: years[1],
-    //         office: office,
-    //       },
-    //     })
-    //     .then(result => {
-    //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //     });
-    // }
   }
 
   // ----------------------------------------------------------------------------------------------------
