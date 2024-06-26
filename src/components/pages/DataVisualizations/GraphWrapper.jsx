@@ -81,11 +81,14 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-    //    ADDED result.data
+
     //--------------------------------------------------------------------------
+    // the heat map api data needs to be accessed by an axios.get with the fiscalSummary endpoint
+    // --------------------------------------------------------------------------
 
     try {
       let fiscalSummaryResult;
+      let heatMapResult;
       let citizenshipSummaryResult;
       if (view === 'time-series') {
         fiscalSummaryResult = await axios.get(
@@ -99,6 +102,18 @@ function GraphWrapper(props) {
           }
         );
         stateSettingCallback(view, office, [fiscalSummaryResult.data]);
+      } else if (view === 'office-heat-map') {
+        heatMapResult = await axios.get(
+          'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
+          {
+            params: {
+              from: years[0],
+              to: years[1],
+              office: office !== 'all' ? office : undefined,
+            },
+          }
+        );
+        stateSettingCallback(view, office, [heatMapResult.data]);
       } else if (view === 'citizenship') {
         citizenshipSummaryResult = await axios.get(
           'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary',
@@ -130,8 +145,7 @@ function GraphWrapper(props) {
       console.error('CATCH ERROR: ', err);
     }
   }
-
-  // ----------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
