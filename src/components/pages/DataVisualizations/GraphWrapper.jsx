@@ -51,9 +51,6 @@ function GraphWrapper(props) {
     }
   }
 
-  //do an async await on this function; try to understand the shape of the API object; use 2 .get's in this function;
-  //The goal is to display the proper data on the graph page
-
   async function updateStateWithNewData(
     years,
     view,
@@ -81,9 +78,6 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-
-    //--------------------------------------------------------------------------
-    // the heat map api data needs to be accessed by an axios.get with the fiscalSummary endpoint
     // --------------------------------------------------------------------------
 
     try {
