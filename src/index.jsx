@@ -26,27 +26,25 @@ import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
 
 // ***********IS THE LINE BELOW NEEDED***********
-import { Auth0Provider } from '@auth0/auth0-react';
+// import { Auth0Provider } from '@auth0/auth0-react';
 
 const { primary_accent_color } = colors;
 
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
-  <Auth0Provider
-    domain={process.env.REACT_APP_AUTH0_DOMAIN}
-    clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
-    redirectUri={window.location.origin}
-  >
-    <Router>
-      <Auth0ProviderWithHistory>
-        <Provider store={store}>
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
-        </Provider>
-      </Auth0ProviderWithHistory>
-    </Router>
-  </Auth0Provider>,
+  <Router>
+    <Auth0ProviderWithHistory
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      redirectUri={window.location.origin}
+    >
+      <Provider store={store}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Provider>
+    </Auth0ProviderWithHistory>
+  </Router>,
   document.getElementById('root')
 );
 
