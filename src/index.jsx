@@ -7,6 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history';
+
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { LandingPage } from './components/pages/Landing';
@@ -36,11 +38,13 @@ ReactDOM.render(
     redirectUri={window.location.origin}
   >
     <Router>
-      <Provider store={store}>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </Provider>
+      <Auth0ProviderWithHistory>
+        <Provider store={store}>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </Provider>
+      </Auth0ProviderWithHistory>
     </Router>
   </Auth0Provider>,
   document.getElementById('root')
