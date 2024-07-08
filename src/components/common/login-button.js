@@ -8,7 +8,7 @@ const LoginButton = () => {
   return (
     <button
       className="btn btn-primary btn-block"
-      style={{ cursor: 'pointer', marginRight: '15px' }}
+      style={{ cursor: 'pointer', marginRight: '15px', marginTop: '15px' }}
       onClick={() => loginWithRedirect()}
     >
       Log In

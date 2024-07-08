@@ -5,6 +5,7 @@ import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
 import LoginButton from '../common/login-button';
 import SignupButton from '../common/signup-button';
+import LogoutButton from '../common/logout-button';
 
 const { primary_accent_color } = colors;
 
@@ -36,6 +37,7 @@ function HeaderContent() {
           }}
         />
         <SignupButton />
+        <LogoutButton />
       </div>
     </div>
   );
