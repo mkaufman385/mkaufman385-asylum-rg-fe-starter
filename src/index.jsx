@@ -14,10 +14,11 @@ import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { LandingPage } from './components/pages/Landing';
 
-import { LoadingComponent } from '../src/components/common/LoadingComponent';
+import LoadingComponent from '../src/components/common/LoadingComponent';
 
 import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
+// import { Profile } from './components/common/profile';
 
 // import { TablePage } from './components/pages/Table';
 
@@ -74,7 +75,7 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
-
+        {/* <Route path="/profile" component={Profile} /> */}
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
