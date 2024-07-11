@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import { Loading } from '../components';
+import LoadingComponent from './LoadingComponent';
 
 const Profile = () => {
   const { user } = useAuth0();
@@ -34,5 +34,5 @@ const Profile = () => {
 };
 
 export default withAuthenticationRequired(Profile, {
-  onRedirecting: () => <Loading />,
+  onRedirecting: () => <LoadingComponent message="Loading ..." />,
 });
