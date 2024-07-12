@@ -20,6 +20,8 @@ import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
 import Profile from './components/common/profile';
 
+// import ProtectedRoute from './auth/protected-route';
+
 // import { TablePage } from './components/pages/Table';
 
 import { Layout } from 'antd';
@@ -76,6 +78,7 @@ export function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
         <Route path="/profile" component={Profile} />
+        {/* <ProtectedRoute path="/profile" component={Profile} /> */}
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
