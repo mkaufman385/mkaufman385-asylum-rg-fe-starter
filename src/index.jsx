@@ -20,19 +20,12 @@ import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
 import Profile from './components/common/profile';
 
-// import ProtectedRoute from './auth/protected-route';
-
-// import { TablePage } from './components/pages/Table';
-
 import { Layout } from 'antd';
 import GraphsContainer from './components/pages/DataVisualizations/GraphsContainer';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
-
-// ***********IS THE LINE BELOW NEEDED***********
-// import { Auth0Provider } from '@auth0/auth0-react';
 
 const { primary_accent_color } = colors;
 

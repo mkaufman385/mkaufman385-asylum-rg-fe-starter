@@ -33,7 +33,6 @@ function HeaderContent() {
           Graphs
         </Link>
         <AuthenticationButton />
-
         <SignupButton />
       </div>
     </div>
